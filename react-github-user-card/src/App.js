@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Axios from "axios";
+import UserCard from "./UserCard";
 
 class App extends React.Component {
   constructor() {
@@ -18,7 +19,7 @@ class App extends React.Component {
         this.setState({
           user: response.data,
         });
-        console.log(this.state.user.login);
+        console.log(this.state.user);
       })
       .catch((error) => {
         console.log(`There was an error: ${error}`);
@@ -28,7 +29,7 @@ class App extends React.Component {
       .then((response) => {
         // console.log(response.data);
         this.setState({
-          followers: response.data, // This is an array of objects
+          followers: response.data, // This is an array of objects. Use .map()
         });
         // console.log(this.state.followers);
       })
@@ -38,7 +39,11 @@ class App extends React.Component {
   }
 
   render() {
-    return null;
+    return (
+      <div>
+        <UserCard user={this.state.user} />
+      </div>
+    );
   }
 }
 
