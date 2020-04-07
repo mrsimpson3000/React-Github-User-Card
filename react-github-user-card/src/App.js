@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import Axios from "axios";
 import UserCard from "./UserCard";
+import FollowerCard from "./FollowerCard";
+import { Row } from "reactstrap";
 
 class App extends React.Component {
   constructor() {
@@ -15,11 +17,11 @@ class App extends React.Component {
   componentDidMount() {
     Axios.get("https://api.github.com/users/mrsimpson3000")
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         this.setState({
           user: response.data,
         });
-        console.log(this.state.user);
+        // console.log(this.state.user);
       })
       .catch((error) => {
         console.log(`There was an error: ${error}`);
@@ -40,9 +42,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <UserCard user={this.state.user} />
-      </div>
+      <>
+        <Row className='mt-2 mb-2'>
+          <UserCard user={this.state.user} />
+        </Row>
+        <Row>
+          <FollowerCard follower={this.state.followers} key='1' />
+        </Row>
+      </>
     );
   }
 }

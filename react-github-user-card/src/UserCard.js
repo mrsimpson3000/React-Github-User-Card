@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardHeader, CardText, CardBody, Col } from "reactstrap";
 
 export default function UserCard(props) {
-  console.log(`name: ${props.user.login}`);
+  // console.log(`name: ${props.user.login}`);
   return (
     <Col md={{ size: 6, offset: 3 }}>
       <Card className='bg-danger text-center'>
